@@ -1,0 +1,45 @@
+<div class="create-group">
+    <h2>Create a Group</h2>
+    <form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
+        <!-- Group Name -->
+        <div class="form-group">
+            <label for="groupName">Group Name</label>
+            <input type="text" id="groupName" formControlName="groupName" placeholder="Enter group name" required>
+        </div>
+
+        <!-- Group Members -->
+        <div class="form-group" formArrayName="groupMembers">
+            <label>Group Members</label>
+            <div *ngFor="let member of groupMembers.controls; let i = index" [formGroupName]="i" class="member-input">
+                <input type="text" formControlName="name" placeholder="Member Name" required>
+                <input type="email" formControlName="email" placeholder="Member Email" required>
+                <button type="button" class="remove-btn" (click)="removeMember(i)">Remove Member</button>
+            </div>
+            <button type="button" class="add-btn" (click)="addMember()">Add Member</button>
+        </div>
+
+        <!-- Group Image -->
+        <div class="form-group">
+            <label for="groupImage">Group Image</label>
+            <input type="file" id="groupImage" (change)="onImageChange($event)" accept="image/*">
+            <div *ngIf="selectedImage" class="image-preview">
+                <img [src]="imagePreviewUrl" alt="Image preview" width="100" height="100" />
+            </div>
+        </div>
+
+
+        <!-- Group Type -->
+        <div class="form-group">
+            <label for="groupType">Group Type</label>
+            <select id="groupType" formControlName="groupType">
+                <option value="Home">Home</option>
+                <option value="Trip">Trip</option>
+                <option value="Couple">Couple</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">Create Group</button>
+    </form>
+</div>

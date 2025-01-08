@@ -1,0 +1,121 @@
+<div class="side-container">
+    <div class="side-menu">
+        <div class="side-menu-list" (click)="selectedMenuItem('dashboard')"
+            [class.selected]="activeMenu === 'dashboard'">
+            <a routerLink="/dashboard">
+                <i class="fa-solid fa-table-columns"></i>
+            </a>
+            <span class="head">Dashboard</span>
+        </div>
+        <div class="side-menu-list" (click)="selectedMenuItem('recent-activity')"
+            [class.selected]="activeMenu === 'recent-activity'">
+            <a routerLink="/recent">
+                <i class="fa-solid fa-flag"></i>
+            </a>
+            <span>Recent activity</span>
+        </div>
+        <div class="side-menu-list" (click)="selectedMenuItem('all-expenses')"
+            [class.selected]="activeMenu === 'all-expenses'">
+            <a routerLink="/all">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+            <span>All expenses</span>
+        </div>
+    </div>
+    <div class="details-sec">
+        <div>
+            <div class="header">
+                <p>GROUPS</p>
+                <p (click)="addGroup()">
+                    <i class="fa-solid fa-plus"></i> Add
+                </p>
+            </div>
+        </div>
+
+        <!-- Show loading spinner while data is being fetched -->
+        <div *ngIf="loading" class="loading-spinner">
+            Loading groups...
+        </div>
+
+        <!-- Display groups once loaded -->
+        <div *ngIf="!loading && groups.length > 0" class="created-group">
+            <p *ngFor="let group of groups" (click)="selectedMenuItem('group', group._id)"
+                [class.selected]="activeMenu === 'group'">
+                <i class="fa-solid fa-tag"></i> {{ group.groupName }}
+            </p>
+        </div>
+
+        <!-- Message if no groups are available -->
+        <div *ngIf="groups.length === 0" class="no-groups">
+            <p>No groups created yet.</p>
+        </div>
+    </div>
+
+
+    <div class="details-sec">
+        <div>
+            <div>
+                <p>FRIENDS</p>
+                <p (click)="addFriend()"><i class="fa-solid fa-plus"></i> add</p>
+            </div>
+        </div>
+
+        <!-- Show loading spinner while data is being fetched -->
+        <div *ngIf="loading" class="loading-spinner">
+            Loading friends...
+        </div>
+
+        <!-- Display groups once loaded -->
+        <div *ngIf="!loading && friends.length > 0" class="created-group">
+            <p *ngFor="let friend of friends">
+                <i class="fa-solid fa-user"></i> {{ friend.name }}
+            </p>
+        </div>
+    </div>
+
+
+    <div class="details-secti">
+        <div>
+            <div>
+                <p class="pending">FRIENDS REQUEST</p>
+            </div>
+        </div>
+
+        <!-- Show loading spinner while data is being fetched -->
+        <div *ngIf="loading" class="loading-spinner">
+            Loading pending requests...
+        </div>
+
+        <!-- Display pending friend requests -->
+        <div *ngIf="!loading && pendingRequest.length > 0" class="created-group">
+            <div *ngFor="let friend of pendingRequest" class="friend-request">
+                <p>
+                    <i class="fa-solid fa-user"></i>{{ friend.sender.name }} sent you a request
+                </p>
+                <div class="action-buttons">
+                    <button (click)="acceptRequest(friend.sender.id)" class="accept-btn">Accept</button>
+                    <button (click)="rejectRequest(friend.sender.id)" class="reject-btn">Reject</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Display message if no pending requests -->
+        <div *ngIf="!loading && pendingRequest.length === 0" class="no-requests">
+            No pending friend requests found.
+        </div>
+    </div>
+
+
+
+    <div class="invite-container">
+        <p>Invite friends</p>
+        <input type="text" placeholder="Enter an email address" [(ngModel)]="recipientEmail">
+        <button (click)="sendInvite()">Send invite</button>
+    </div>
+
+    <div class="share-btn">
+        <button>share</button>
+        <button>Tweet</button>
+    </div>
+</div>
+<router-outlet></router-outlet>

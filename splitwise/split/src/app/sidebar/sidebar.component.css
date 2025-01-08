@@ -1,0 +1,181 @@
+.side-menu {
+  margin-top: 10px;
+}
+
+.side-menu-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 5px 5px 8px;
+  cursor: pointer;
+  border-left: 6px solid transparent;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.side-menu-list a i {
+  color: gray;
+}
+
+.side-menu-list span {
+  font-size: 13px;
+  color: gray;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.side-menu-list.selected {
+  border-left: 6px solid #5bc5a7;
+}
+
+.side-menu-list.selected a i {
+  color: #5bc5a7;
+}
+
+.side-menu-list.selected span {
+  color: #5bc5a7;
+}
+.details-sec {
+  /* border: 1px solid; */
+  margin-top: 10px;
+}
+.details-sec div div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  /* width: 90%; */
+  margin: auto;
+  padding: 7px;
+  background-color: #f6f6f6;
+  color: gray;
+  cursor: pointer;
+}
+.details-sec div div:hover {
+  background-color: #bdbdbd;
+  color: gray;
+}
+.created-group {
+  color: gray;
+  margin-top: 10px;
+}
+.created-group p {
+  margin-top: 10px;
+  font-size: 12px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+.created-group p i {
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.invite-container {
+  margin-top: 15px;
+  border: 1px solid #e0e0e0;
+}
+.invite-container p {
+  padding: 5px;
+  background-color: #5bc5a7;
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+.invite-container input {
+  padding: 5px;
+  margin: 8px;
+  outline: none;
+  border: 1px solid #e0e0e0;
+}
+.invite-container button {
+  margin: 2px 8px 8px 8px;
+  padding: 2px;
+  outline: none;
+  cursor: pointer;
+  background-color: #e6e6e6;
+}
+.share-btn {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.share-btn button {
+  padding: 10px;
+  width: 48%;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+.share-btn button:first-child {
+  background-color: #3b5998;
+  color: white;
+}
+.share-btn button:last-child {
+  background-color: #4099ff;
+  color: white;
+}
+
+.details-secti {
+  margin-top: 10px;
+}
+.pending {
+  font-size: 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  /* width: 90%; */
+  margin: auto;
+  padding: 7px;
+  background-color: #f6f6f6;
+  color: gray;
+  cursor: pointer;
+}
+
+.loading-spinner {
+  color: #666;
+  font-size: 1rem;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 10px;
+  /* border: 1px solid; */
+}
+
+.accept-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reject-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.accept-btn:hover {
+  background-color: #45a049;
+}
+
+.reject-btn:hover {
+  background-color: #e53935;
+}
+
+.no-requests {
+  color: #999;
+  text-align: center;
+}

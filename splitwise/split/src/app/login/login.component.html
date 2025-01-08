@@ -1,0 +1,58 @@
+<div class="login-container">
+    <div class="login-form">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="form-container">
+                <h1>Log in</h1>
+                <div class="email-container">
+                    <label for="">Email address</label>
+                    <input type="email" placeholder="Enter email" formControlName="email">
+                    <div class="text-error"
+                        *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].touched || userForm.controls['email'].dirty || isFormSubmitted )">
+                        <span *ngIf="userForm.controls['email']?.errors?.['required']">Email is required</span>
+                        <span *ngIf="userForm.controls['email']?.errors?.['email']">
+                            Please enter correct email
+                        </span>
+                    </div>
+                </div>
+                <div class="password-container">
+                    <label for="">Password</label>
+                    <input type="password" placeholder="Enter password" formControlName="password">
+                    <div class="text-error"
+                        *ngIf="userForm.controls['password'].invalid && (userForm.controls['password'].touched || userForm.controls['password'].dirty || isFormSubmitted )">
+                        <span *ngIf="userForm.controls['password']?.errors?.['required']">Password is required</span>
+                        <span *ngIf="userForm.controls['password']?.errors?.['pattern']">
+                            Password must be at least 8 characters long, with at least one uppercase letter and one
+                            number.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="loginbtn">
+                <button type="submit" (click)="onSubmit()">Log in</button>
+            </div>
+
+        </form>
+        <div class="social-login">
+            <div>
+                <a href="">Forgot your password</a>
+            </div>
+
+            <div class="or">
+                <div></div>
+                <p>Or</p>
+                <div></div>
+            </div>
+
+            <div class="google-login">
+                <button (click)="loginWithGoogle()">
+                    <img src="https://assets.splitwise.com/assets/fat_rabbit/signup/google-2017-a5b76a1c1eebd99689b571954b1ed40e13338b8a08d6649ffc5ca2ea1bfcb953.png"
+                        alt="">
+                    <p>Sign in with Google</p>
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,15 @@
+<!-- Main content area where the selected component will be displayed -->
+<div class="main-content">
+    <ng-container *ngIf="activeMenu === 'dashboard'">
+        <app-expense-dash></app-expense-dash>
+    </ng-container>
+    <ng-container *ngIf="activeMenu === 'recent-activity'">
+        <app-recent></app-recent>
+    </ng-container>
+    <ng-container *ngIf="activeMenu === 'all-expenses'">
+        <app-all></app-all>
+    </ng-container>
+    <ng-container *ngIf="activeMenu === 'group'">
+        <app-getgroup></app-getgroup>
+    </ng-container>
+</div>

@@ -1,0 +1,127 @@
+* {
+  font-family: sans-serif;
+}
+
+.register-container {
+  /* border: 1px solid; */
+  width: 50%;
+  margin: auto;
+  margin-top: 80px;
+}
+.register-content {
+  width: 90%;
+  margin: auto;
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+.img-container {
+  /* border: 1px solid green; */
+  width: 40%;
+}
+.img-container img {
+  width: 100%;
+  height: 200px;
+}
+.user-section {
+  /* border: 1px solid yellow; */
+  margin-top: 10px;
+  width: 55%;
+}
+
+.content-heading {
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #999;
+  font-weight: bold;
+  line-height: 20px;
+}
+form {
+  margin-top: 20px;
+}
+.input-container div {
+  margin-bottom: 20px;
+}
+.input-container div label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 20px;
+  line-height: 140%;
+  font-weight: 500;
+}
+.input-container div label span {
+  font-size: 16px;
+  font-weight: 100;
+}
+.input-container div input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  outline: none;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.input-container div input:focus {
+  border: #1cc29f;
+  box-shadow: 0 0 5px #1cc29f;
+}
+.signup-container {
+  /* border: 1px solid; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn-container {
+  /* border: 1px solid; */
+  width: 50%;
+}
+.btn-container button {
+  padding: 20px;
+  width: 100%;
+  background: #ff652f;
+  color: #fff;
+  text-shadow: 0 -1px 0 #c83400;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-container button:active {
+  transform: scale(0.95); /* Shrink button slightly */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+.or {
+  margin-left: 10px;
+}
+.google {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  padding: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.google img {
+  width: 15px;
+  height: 15px;
+}
+
+.google:active {
+  transform: scale(0.95); /* Shrink button slightly */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+.text-danger {
+  margin-top: 5px;
+}
+.text-danger span {
+  color: red;
+  font-size: 12px;
+}

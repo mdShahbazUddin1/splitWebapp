@@ -1,0 +1,321 @@
+<div class="main-cont">
+    <div class="container">
+        <div>
+            <div>
+                <h1 class="head">{{groupName}}</h1>
+            </div>
+            <div class="das-btn">
+                <div>
+                    <button class="add" (click)="openExpenseModal()">Add an expense</button>
+                </div>
+                <div>
+                    <button class="edit-group-btn" (click)="openEditModal(groupId)">Edit</button>
+                </div>
+                <div>
+                    <button class="del" (click)="deleteGroup(groupId)">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="dash-expense">
+            <div>
+                <p>{{ createdDate || 'December 2024' }}</p>
+
+            </div>
+
+            <div>
+                <p>View printable summary</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="getexpense-container">
+        <div *ngIf="hasExpenses(); else noExpense">
+            <div *ngFor="let expense of expenses">
+                <div class="expense-detail" *ngIf="expense.group === groupName" (click)="toggleExpenseDetail(expense)">
+                    <div class="expen">
+                        <div class="detail">
+                            <div class="expense-date">
+                                <p>{{ expense.created_at | date: 'MMM' }}</p>
+                                <p>{{ expense.created_at | date: 'd' }}</p>
+                            </div>
+                            <div class="img-cont">
+                                <img src="https://s3.amazonaws.com/splitwise/uploads/category/icon/square_v2/food-and-drink/dining-out@2x.png"
+                                    alt="img" />
+                            </div>
+                            <div class="category">
+                                <p>{{ expense.description || 'N/A' }}</p>
+                            </div>
+                        </div>
+                        <div class="exp-amt">
+                            <p>Paid by {{ expense.paid_by }}</p>
+                            <p>{{ expense.totalAmount }}</p>
+                        </div>
+                        <div class="delete">
+                            <p (click)="deleteExpense(expense._id)">x</p>
+                        </div>
+                    </div>
+
+                    <!-- Expanded Details -->
+                    <div class="expanded-details" *ngIf="selectedExpense === expense">
+                        <p>Group: {{ expense.group }}</p>
+                        <p>Category: {{ expense.description }}</p>
+                        <p>Amount: {{ expense.totalAmount }}</p>
+                        <p>
+                            Added by {{ expense.paid_by }} on {{
+                            expense.created_at | date: 'MMMM d, yyyy'
+                            }}
+                        </p>
+                        <p><button (click)=" openEditExpenseModal()">Edit Expense</button></p>
+                        <div *ngIf="!isPaidByCurrentUser">
+                            <button class="settle" (click)="openSettleModal()">Settle up</button>
+                        </div>
+                        <p>{{ expense.paid_by}} paid <span style="color: green;">{{ expense.totalAmount}}</span> at
+                            {{expense.description}}</p>
+                        <div *ngFor="let split of expense.splitDetails" class="split-detail">
+                            <p>
+                                {{ split.name }}
+                                <span *ngIf="split.settle; else notSettled">
+                                    has paid <span style="color: green;">{{ split.lentAmount }}</span>
+                                </span>
+                                <ng-template #notSettled>
+                                    need to return <span style="color: red;">{{ split.lentAmount }}</span> to
+                                    {{expense.paid_by}}
+                                </ng-template>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Template for no expenses -->
+        <ng-template #noExpense>
+            <div class="no-expense">
+                <p>No expense added yet</p>
+            </div>
+        </ng-template>
+    </div>
+
+</div>
+<!-- Edit Group Modal -->
+<div class="edit-group-modal" [class.is-visible]="isEditModal">
+    <div class="modal-content">
+        <span class="modal-close" (click)="closeEditModal()">x</span>
+        <h2 class="modal-title">Edit Group</h2>
+        <form (ngSubmit)="updateGroupDetails()" class="modal-form">
+            <!-- Group Name Input -->
+            <div class="form-group">
+                <label for="groupName">Group Name:</label>
+                <input type="text" id="groupName" [(ngModel)]="groupData.groupName" name="groupName"
+                    class="input-field" />
+            </div>
+
+            <!-- Group Members List -->
+            <div class="form-group">
+                <label for="groupMembers">Members:</label>
+                <ul class="member-list">
+                    <li *ngFor="let member of groupData.members; let i = index" class="member-item">
+                        <div class="member-details">
+                            <input type="text" [(ngModel)]="member.name" name="memberName-{{ i }}"
+                                class="member-name-input" placeholder="Name" />
+                            <input type="email" [(ngModel)]="member.email" name="memberEmail-{{ i }}"
+                                class="member-email-input" placeholder="Email" />
+                            <button type="button" class="remove-member-btn" (click)="removeMember(i)">
+                                &#x2716; <!-- Delete Icon -->
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Add New Member Section -->
+            <div class="form-group">
+                <label for="newMemberEmail">Add Member by Email:</label>
+                <div class="add-member-container">
+                    <input type="text" [(ngModel)]="newMemberName" name="newMemberName" class="add-member-input"
+                        placeholder="Enter member's name" />
+                    <input type="email" [(ngModel)]="newMemberEmail" name="newMemberEmail" class="add-member-input"
+                        placeholder="Enter member's email" />
+                    <button type="button" class="add-member-btn" (click)="addMember()">Add</button>
+                </div>
+            </div>
+
+            <!-- Save Changes Button -->
+            <div class="form-group">
+                <button type="submit" class="save-changes-btn">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<!-- modal -->
+<div class="main-container" [ngClass]="{'hidden': !isModalOpen}">
+    <div class="modal-container">
+        <div class="expense">
+            <form [formGroup]="expernseForm" (ngSubmit)="onSubmit()">
+                <div class="expense-header">
+                    <div>
+                        <h1>Add an expense</h1>
+                    </div>
+                    <div>
+                        <p style="cursor: pointer;" (click)="closeExpenseModal()">x</p>
+                    </div>
+                </div>
+                <div class="withyou">
+                    <span>With you and:</span>
+                    <div class="all">
+                        <div>
+                            <p>S</p>
+                        </div>
+                        <span>All of {{groupName}}</span>
+                    </div>
+                </div>
+                <div class="add-expense">
+
+                    <div class="expense-details">
+                        <div class="img-expense">
+                            <img src="https://s3.amazonaws.com/splitwise/uploads/category/icon/square_v2/uncategorized/general@2x.png"
+                                alt="general">
+                        </div>
+                        <div class="input-cont">
+                            <div>
+                                <input type="text" placeholder="Enter a description" formControlName="description">
+                            </div>
+                            <div>
+                                <input type="number" placeholder="0.00" formControlName="amount"
+                                    (input)="calculateAmountPerPerson()">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="paidby">
+                        <p>Paid by <span class="highlight">you</span> and split <span class="highlight">equality</span>
+                        </p>
+                        <p>₹ {{ amountPerPerson | number: '1.2-2' }}/person</p>
+                    </div>
+                </div>
+
+                <div class="btn-container">
+                    <div>
+                        <button>December 13, 2024</button>
+                        <button>Add images/notes</button>
+                    </div>
+                    <div>
+                        <button>Funky</button>
+                    </div>
+                </div>
+                <div class="submit-btn">
+                    <button type="button" (click)="closeExpenseModal()">Cancel</button>
+                    <button [disabled]="!expernseForm.valid">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<!-- edit expense modal -->
+<div class="main-container" [ngClass]="{'hidden': !isExpenseModal}">
+    <div class="modal-container">
+        <div class="expense">
+            <form [formGroup]="editExpenseForm" (ngSubmit)="onEditExpenseSubmit()">
+                <div class="expense-header">
+                    <div>
+                        <h1>Edit an expense</h1>
+                    </div>
+                    <div>
+                        <p style="cursor: pointer;" (click)="closeEditExpenseModal()">x</p>
+                    </div>
+                </div>
+                <div class="withyou">
+                    <span>With you and:</span>
+                    <div class="all">
+                        <div>
+                            <p>S</p>
+                        </div>
+                        <span>All of {{groupName}}</span>
+                    </div>
+                </div>
+                <div class="add-expense">
+
+                    <div class="expense-details">
+                        <div class="img-expense">
+                            <img src="https://s3.amazonaws.com/splitwise/uploads/category/icon/square_v2/uncategorized/general@2x.png"
+                                alt="general">
+                        </div>
+                        <div class="input-cont">
+                            <div>
+                                <input type="text" placeholder="Enter a description" formControlName="description">
+                            </div>
+                            <div>
+                                <input type="number" placeholder="0.00" formControlName="amount"
+                                    (input)="calculateAmountPerPerson()">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="paidby">
+                        <p>Paid by <span class="highlight">you</span> and split <span class="highlight">equality</span>
+                        </p>
+                        <p>₹ {{ amountPerPerson | number: '1.2-2' }}/person</p>
+                    </div>
+                </div>
+
+                <div class="btn-container">
+                    <div>
+                        <button>December 13, 2024</button>
+                        <button>Add images/notes</button>
+                    </div>
+                    <div>
+                        <button>Funky</button>
+                    </div>
+                </div>
+                <div class="submit-btn">
+                    <button type="button" (click)="closeEditExpenseModal()">Cancel</button>
+                    <button type="submit" [disabled]="!editExpenseForm.valid">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="main-container" [ngClass]="{'hidden': !isSettleOpen}">
+    <div class="modal-container">
+        <div class="expense">
+            <form [formGroup]="expernseForm">
+                <div class="expense-header">
+                    <div>
+                        <h1>Settle up</h1>
+                    </div>
+                    <div>
+                        <p style="cursor: pointer;" (click)="closeExpenseModal()">x</p>
+                    </div>
+                </div>
+
+                <div class="add-expense">
+
+                    <div class="expense-details" *ngIf="!isRecordClicked" style="display: block;text-align: center;">
+                        <p>Choose a payment method</p>
+                        <button (click)="settleAmount()" style="margin-top: 10px;">Record a cash payment</button>
+                    </div>
+
+                    <div class="expense-details" *ngIf="isRecordClicked" style="display: block;text-align: center;">
+                        <p>{{ senderName }} paying {{ paidAmount }} to {{ receiverName }}</p>
+
+                    </div>
+
+                </div>
+                <div class="submit-btn">
+                    <button type="button" (click)="closeExpenseModal()">Cancel</button>
+                    <button *ngIf="isRecordClicked" (click)="settleExpense()">Pay</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

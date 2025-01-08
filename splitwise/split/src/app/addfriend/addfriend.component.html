@@ -1,0 +1,13 @@
+<div class="add-friend-container">
+    <h3>Send Friend Request</h3>
+    <!-- Create the form using the formGroup directive -->
+    <form [formGroup]="addFriendForm" (ngSubmit)="sendFriendRequest()">
+        <input type="email" formControlName="receiverEmail" placeholder="Enter receiver's email" required />
+        <button type="submit" [disabled]="addFriendForm.invalid">Send Request</button>
+        <!-- Disable button if form is invalid -->
+
+        <!-- Success and Error Messages -->
+        <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+        <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+    </form>
+</div>

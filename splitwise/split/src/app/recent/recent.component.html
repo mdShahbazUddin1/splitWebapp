@@ -1,0 +1,22 @@
+<div class="recent-activities-container">
+    <h2>Recent Activities</h2>
+
+    <div *ngIf="activities.length > 0; else noActivities">
+        <div *ngFor="let activity of activities" class="activity-card">
+            <div class="activity-header">
+                <strong>{{ activity.action }}</strong>
+            </div>
+            <div class="activity-details">
+                <p>{{ activity.details }}</p>
+                <p class="activity-date">{{ activity.date }}</p>
+            </div>
+            <div class="activity-footer">
+                <span class="amount">{{ activity.amount }}</span>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #noActivities>
+        <p class="no-activities-message">No recent activities found.</p>
+    </ng-template>
+</div>

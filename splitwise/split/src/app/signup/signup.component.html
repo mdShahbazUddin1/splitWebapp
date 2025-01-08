@@ -1,0 +1,71 @@
+<div class="register-container">
+    <div class="register-content">
+        <div class="img-container">
+            <img src="https://assets.splitwise.com/assets/core/logo-square-65a6124237868b1d2ce2f5db2ab0b7c777e2348b797626816400534116ae22d7.svg"
+                alt="">
+        </div>
+        <div class="user-section">
+            <p class="content-heading">Introduce yourself</p>
+
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <div class="input-container">
+                    <div class="step step-1" *ngIf="isFirstInputFilled">
+                        <label for="">Hi there! My name is</label>
+                        <input type="text" id="name" formControlName="name">
+                        <div class="text-danger"
+                            *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].touched || userForm.controls['name'].dirty) || isFormSubmitted ">
+                            <span *ngIf="userForm.controls['name']?.errors?.['required']">Name is required</span>
+                            <span *ngIf="userForm.controls['name']?.errors?.['minlength']">
+                                Minimum 4 characters required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="step step-2" *ngIf="isSecondInputVisible">
+                        <label for=""><span>Here’s my</span> email address:</label>
+                        <input type="email" id="email" name="email" formControlName="email">
+                        <div class="text-danger"
+                            *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].touched || userForm.controls['email'].dirty || isFormSubmitted )">
+                            <span *ngIf="userForm.controls['email']?.errors?.['required']">Email is required</span>
+                            <span *ngIf="userForm.controls['email']?.errors?.['email']">
+                                Please enter correct email
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="step step-3" *ngIf="isThirdInputVisible">
+                        <label for=""><span>And here’s</span> my password:</label>
+                        <input type="password" id="password" name="password" formControlName="password">
+                        <div class="text-danger"
+                            *ngIf="userForm.controls['password'].invalid && (userForm.controls['password'].touched || userForm.controls['password'].dirty || isFormSubmitted )">
+                            <span *ngIf="userForm.controls['password']?.errors?.['required']">Password is
+                                required</span>
+                            <span *ngIf="userForm.controls['password']?.errors?.['pattern']">
+                                Password must be at least 8 characters long, with at least one uppercase letter and one
+                                number.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <div class="signup-container" *ngIf="isSignupVisible">
+                <div class="btn-container">
+                    <button type="submit" (click)="onSubmit()">Sign me up!</button>
+                </div>
+
+                <div class="or">
+                    <div></div>
+                    <p>or</p>
+                    <div></div>
+                </div>
+                <div>
+                    <button class="google" (click)="loginWithGoogle()">
+                        <img src="https://assets.splitwise.com/assets/fat_rabbit/signup/google-2017-a5b76a1c1eebd99689b571954b1ed40e13338b8a08d6649ffc5ca2ea1bfcb953.png"
+                            alt="">
+                        <p>Sign up with Google</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+.dashboard-container {
+  width: 75%;
+  margin: auto;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+.sidebar {
+  /* border: 1px solid red; */
+  width: 20%;
+}
+
+.main {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  width: 58%;
+  border: 1px solid #e0e0e0;
+  height: 100vh;
+}
+
+.right-side {
+  border: 1px solid green;
+  width: 20%;
+}

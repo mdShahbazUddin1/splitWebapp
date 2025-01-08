@@ -1,0 +1,114 @@
+.navbar-container {
+  width: 100%;
+  /* position: fixed; */
+  /* border: 1px solid; */
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: white;
+  /* top: 0; */
+  /* z-index: 99; */
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+}
+.logo {
+  cursor: pointer;
+}
+.button-container {
+  width: 13%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* border: 1px solid; */
+  justify-content: space-between;
+}
+.button-container > a {
+  width: 100%;
+}
+.button-container > a > button {
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 7px;
+  background-color: #1cc29f;
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add transition */
+}
+
+.button-container > a > button:active {
+  transform: scale(0.95); /* Shrink button slightly */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+.user-info {
+  width: 15%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  /* border: 1px solid; */
+  justify-content: space-between;
+}
+.user-details {
+  width: 80%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  /* justify-content: flex-end; */
+}
+.profile {
+  border: 1px solid;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+.profile img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+.account {
+  position: absolute;
+  width: 100%;
+  top: 35px;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.account {
+  display: block;
+}
+
+.account ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.account ul li {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.account ul li:hover {
+  background-color: #1cc29f;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}

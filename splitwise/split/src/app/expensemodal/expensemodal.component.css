@@ -1,0 +1,236 @@
+.main-container {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+}
+
+.modal-container {
+  /* border: 1px solid red; */
+  width: 352px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #999;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+.expense-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #5cc5a7;
+  color: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #36977b;
+  text-shadow: 0 -1px 0 #318a71;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+.expense-header h1 {
+  font-size: 18px;
+}
+.fa-xmark {
+  cursor: pointer;
+}
+.withyou {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 95%;
+  margin: auto;
+  margin-top: 10px;
+  font-family: sans-serif;
+}
+.withyou span {
+  font-size: 14px;
+}
+.all {
+  display: flex;
+  gap: 5px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  background-color: #e0e0e0;
+  align-items: center;
+  cursor: pointer;
+}
+.all p {
+  background-color: #5cc5a7;
+  color: white;
+  width: 17px;
+  height: 17px;
+  text-align: center;
+  font-size: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.all span {
+  font-size: 12px;
+  padding-right: 2px;
+  font-family: sans-serif;
+}
+.add-expense {
+  /* border: 1px solid; */
+  margin-top: 10px;
+}
+.expense-details {
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: start;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+.img-expense {
+  /* border: 1px solid; */
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.img-expense img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.input-cont input {
+  padding: 10px;
+  outline: none;
+  border-left: none;
+  border: none;
+  border-bottom: 1px dashed #ccc;
+}
+.input-cont input::placeholder {
+  font-size: 17px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #b3b3b3;
+}
+
+.paidby {
+  text-align: center;
+  margin-top: 10px;
+  font-family: sans-serif;
+  font-size: 13px;
+  color: #707070;
+}
+.paidby p {
+  margin-bottom: 5px;
+}
+.highlight {
+  color: #5cc5a7;
+}
+
+.btn-container {
+  /* border: 1px solid; */
+  margin-top: 15px;
+}
+.btn-container div:first-child {
+  width: 95%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.btn-container button {
+  outline: none;
+  border: 1px solid #e0e0e0;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-container div:last-child {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 50%;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.submit-btn {
+  margin-top: 10px;
+  border-top: 1px solid #e0e0e0;
+  width: 100%;
+  text-align: end;
+}
+
+.submit-btn button {
+  margin-right: 15px;
+  margin-top: 10px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.submit-btn button:first-child {
+  background: #f6f6f6;
+  color: #333;
+}
+.submit-btn button:last-child {
+  background: #5cc5a7;
+  color: #fff;
+  text-shadow: 0 -1px 0px #318a71;
+}
+
+.hidden {
+  display: none;
+}
+
+.date-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-buttons {
+  margin-top: 15px;
+}
+
+.modal-buttons button {
+  margin: 0 10px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}

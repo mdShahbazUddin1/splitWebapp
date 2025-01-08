@@ -1,0 +1,66 @@
+* {
+  font-family: sans-serif;
+}
+.head {
+  font-size: 22px;
+}
+.container {
+  background-color: #eee;
+  padding: 10px;
+}
+.container div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.das-btn {
+  width: 44%;
+}
+.das-btn div:first-child {
+  width: 60%;
+}
+.das-btn div:last-child {
+  width: 40%;
+}
+.das-btn div button {
+  width: 95%;
+  outline: none;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 8px;
+}
+.dash-expense {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+.dash-expense div {
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 12px;
+  font-family: sans-serif;
+  width: 30%;
+}
+.dash-expense p:first-child {
+  color: #318970;
+  text-align: center;
+}
+.dash-expense p:last-child {
+  color: gray;
+}
+.add {
+  background: #ff652f;
+  color: #fff;
+  text-shadow: 0 -1px 0 #c83400;
+}
+.settle {
+  background: #5bc5a7;
+  color: #fff;
+  text-shadow: 0 -1px 0 #318970;
+}

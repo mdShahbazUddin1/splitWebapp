@@ -1,0 +1,4 @@
+<p>toaster works!</p>
+<div *ngIf="isVisible" class="toast" [ngClass]="{'toast-success': type === 'success', 'toast-error': type === 'error'}">
+    {{ message }}
+</div>

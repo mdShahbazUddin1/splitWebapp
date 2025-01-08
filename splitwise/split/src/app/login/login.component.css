@@ -1,0 +1,167 @@
+* {
+  font-family: sans-serif;
+}
+
+.login-container {
+  background-image: url("https://assets.splitwise.com/assets/core/facets.png");
+  width: 100%;
+  height: 570px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* position: relative; */
+}
+.login-form {
+  border: 1px solid #ccc;
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  position: relative;
+  top: 50px;
+}
+
+form {
+  /* border: 1px solid; */
+  width: 90%;
+  margin: auto;
+}
+.social-login {
+  /* border: 1px solid; */
+  width: 90%;
+  margin: auto;
+}
+
+.form-container {
+  /* border: 1px solid; */
+  margin-top: 10px;
+}
+.form-container h1 {
+  font-weight: 100;
+  font-size: 1.72rem;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.form-container div label {
+  display: block;
+  margin-bottom: 5px;
+  color: #414040;
+}
+
+.form-container div {
+  margin-top: 9px;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+.loginbtn {
+  /* border: 1px solid */
+  width: 100%;
+  margin-top: 20px;
+}
+.loginbtn button {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: #1cc29f;
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.loginbtn button:active {
+  transform: scale(0.95); /* Shrink button slightly */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+.social-login {
+  /* border: 1px solid; */
+  margin-top: 20px;
+  text-align: center;
+}
+.social-login a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #1cc29f;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.or {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.or p {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.or div {
+  height: 2px;
+  width: 40px;
+  background-color: #e0e0e0;
+}
+.google-login {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.google-login button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+  color: black;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.google-login button img {
+  width: 25px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.google-login button:hover {
+  border-color: #888;
+  color: #000;
+  box-shadow: 0 2px 0 0 rgba(55, 59, 63, 0.5);
+}
+
+.google-login button:active {
+  border-color: #555;
+  transform: scale(0.98);
+}
+
+.google-login button:hover img {
+  transform: scale(1.1);
+}
+.text-error {
+  position: relative;
+  top: -10px;
+  /* border: 1px solid; */
+}
+.text-error span {
+  color: red;
+  font-size: 12px;
+}
